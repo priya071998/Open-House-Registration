@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin-top: -250px;
+    }
+
+    .box a {
+        margin: -5px; /* Add some space between the buttons */
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        background: #1e9bff;
+        color: white;
+        border: none;
+        border-radius: -10px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        /* Apply the background color to the body */
+    body {
+        background-color: #1f212e;
+
+    }
+</style>
+<body>
+
+<div class="box">
+    <div class="content">
+        <div id="home">
+            <a href="/login" style="--clr:#1e9bff"><span>LOGIN</span><i></i></a>
+            <br>
+            <a href="/index" style="--clr:#1e9bff"><span>CREATE AN ACCOUNT</span><i></i></a>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

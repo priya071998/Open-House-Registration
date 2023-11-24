@@ -1,0 +1,239 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<style>
+    .icon-container {
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       gap: 10px; /* Adjust the gap between icons as needed */
+       justify-content: center;
+       margin: 0 auto;
+   }
+
+   .icon {
+       text-align: center;
+       padding: 10px;
+       border: 1px solid #ccc;
+       background-color: #1f212e;
+       height: 300px; /* Set a fixed height for .icon elements */
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       width: 170px;
+       margin: 10px;
+       gap: 10px;
+   }
+   .submit-button-container {
+        display: flex;
+        justify-content: center;
+        height: 100vh; /* Set the height to 100% of the viewport height */
+    }
+   .btn {
+    height: 50px;
+    }
+   h3 {
+       margin: 0; /* Remove any margin that might affect alignment */
+   }
+   select {
+       color: black !important;
+       width: 100%; /* Make the select element take up the full width of the .icon */
+       height: 40px; /* Set a consistent height for select elements */
+   }
+
+   /* Change the background color of select options to white */
+   select option {
+       color: black !important;
+   }
+
+   /* Apply margin to the last two .icon elements */
+    .icon:nth-last-child(-n+2) {
+        margin-bottom: 50px; /* Adjust the margin as needed */
+    }
+
+     @media (max-width: 768px) {
+        .icon {
+            height: 160px; /* Further reduced height for mobile */
+        }
+
+        h3 {
+            font-size: 16px; /* Further reduce font size for mobile */
+            font-family: "Titillium Web", ExtraLight;
+        }
+
+        img {
+            width: 60px; /* Further reduce the width of the images for mobile */
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        select {
+            height: 25px; /* Further reduced height for mobile */
+            font-size: 12px; /* Further reduce font size for select elements on mobile */
+            text-align: center;
+        }
+    }
+
+</style>
+<body>
+<form method="POST" action="{{ url_for('submit_ratings') }}">
+<div class="icon-container">
+    <div class="icon" data-item="1">
+        <img src="static/luggage.png" alt="Icon 1">
+        <h3>AI Travel</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="ai_travel_rating" class="rating-input" value="0">
+    </div>
+    <div class="icon" data-item="2">
+        <img src="static/botnet.png" alt="Icon 2">
+        <h3>Break the code</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="break_the_code_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="3">
+        <img src="static/chalkboard.png" alt="Icon 2">
+        <h3>Classroom</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="classroom_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="4">
+        <img src="static/drone.png" alt="Icon 2">
+        <h3>Drones</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="drones_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="5">
+        <img src="static/geography.png" alt="Icon 2">
+        <h3>Global Warming</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="global_warming_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="6">
+        <img src="static/open-book.png" alt="Icon 2">
+        <h3>Our Courses</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="our_courses_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="7">
+        <img src="static/agreement.png" alt="Icon 2">
+        <h3>Industry partners</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="industry_partners_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="8">
+        <img src="static/telescope.png" alt="Icon 2">
+        <h3>Protect Our sky</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="protect_our_sky_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="9">
+        <img src="static/book.png" alt="Icon 2">
+        <h3>Pursue your dreams</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="pursue_your_dreams_rating" class="rating-input" value="0">
+    </div>
+
+    <div class="icon" data-item="10">
+        <img src="static/megaphone.png" alt="Icon 2">
+        <h3>SIT TOUR</h3>
+        <div class="rating">
+            <i class="far fa-star" data-rating="1"></i>
+            <i class="far fa-star" data-rating="2"></i>
+            <i class="far fa-star" data-rating="3"></i>
+            <i class="far fa-star" data-rating="4"></i>
+            <i class="far fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" name="sit_tour_rating" class="rating-input" value="0">
+    </div>
+</div>
+    <div class="submit-button-container">
+        <button type="submit" value="submit" class="btn" style="v--clr:#1e9bff"><span>SUBMIT</span><i></i></button>
+</div>
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $(".rating i").on("click", function() {
+        const item = $(this).closest(".icon");
+        const rating = $(this).data("rating");
+
+        // Remove "far" and add "fa" for the clicked star
+        $(this).removeClass("far").addClass("fa");
+
+        // Fill in the previous stars as well
+        $(this).prevAll().removeClass("far").addClass("fa");
+
+        item.find(".average-rating").hide();
+
+        // Update the hidden input field for the category's rating
+        const categoryRatingInput = item.find('.rating-input');
+        categoryRatingInput.val(rating);
+        });
+    });
+</script>
+{% endblock %}

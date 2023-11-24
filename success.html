@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quiz</title>
+    <style>
+        /* Style to remove underline from links */
+        a {
+            text-decoration: none;
+        }
+
+        /* Style for the link itself */
+        a {
+            color: var(--clr);
+            text-transform: uppercase;
+            font-size: 1.5em;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+        }
+          /* Flexbox centering styles */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+ <div class="content">
+    <div id="home" class="flex-center flex-column animated-boxed in">
+    <h1><b>Thank you for your rating!</b></h1>
+    </div>
+</div>
+{% endblock %}

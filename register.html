@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <style>
+        /* Change the font color of select options to black */
+        select {
+            color: black !important;
+        }
+
+        /* Change the background color of select options to white */
+        select option {
+            color: black !important;
+        }
+    </style>
+<body>
+    <div class="content">
+        <div id="home" class="flex-center flex-column animated-box in">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="/register" method="post" onsubmit="return validateForm();">
+
+                        <input type="hidden" name="action" value="/">
+                        <h1><b>Open House 2024 Registration Form</b> </h1>
+                        <br>
+                        <fieldset>
+
+                            <label for="email">Email:</label>
+                            <input id="email" name="email" required type="email" minlength="5" maxlength="100"><br>
+
+                            <label for="password">Password:</label>
+                            <input id="password" maxlength="50" minlength="8" name="password" type="password" placeholder="Minimum 8 characters">
+                            <br>
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input id="confirm_password" maxlength="50" minlength="8" name="confirm_password" type="password" required>
+
+                        <button type="submit" class="btn" style="--clr:#1e9bff"><span>SIGN UP</span><i></i></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function validateEmail() {
+        var email = document.getElementById("email").value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zAZ.-]+\.[a-zA-Z]{2,4}$/;
+
+        var validationMessage = document.getElementById("validation-message");
+
+        if (emailPattern.test(email)) {
+            validationMessage.textContent = "Valid email!";
+        } else {
+            validationMessage.textContent = "Invalid email. Please enter a valid email address.";
+        }
+    }
+</script>
+{% endblock %}
