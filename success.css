@@ -1,0 +1,64 @@
+/* The animation starts here */
+ .animated-box {
+   position: relative;
+ }
+.animated-box h1 {
+  font-weight: 200;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+ .animated-box:after {
+   content: '';
+   position: absolute;
+   top: 0.5px;
+   left: 30px;
+   right: 30px;
+   bottom: 5px;
+   border-radius: 4px;
+   background: linear-gradient(120deg, #00F260, #0575E6, #00F260);
+   background-size: 300% 300%;
+   clip-path: polygon(0% 50%, 3px 50%, 3px 3px, calc(50% - 3px) 3px, calc(50% - 3px) calc(50% - 3px), 3px calc(50% - 3px), 3px 50%, 50% 50%, 50% 0%, 0% 0%);
+ }
+
+ .animated-box.in:after {
+   animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+ }
+ .flex-column {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .flex-center {
+   justify-content: center;
+   align-items: center;
+ }
+ h2 {
+   margin-bottom: 1rem;
+   font-size: 5.4rem;
+     color: #a653f5;
+     margin-bottom: 5rem;
+     text-align: center;
+     box-sizing: border-box;
+     margin: 0;
+       padding: 0;
+       color: #fff;
+       gap: 5px;
+ }
+
+ @keyframes frame-enter {
+   0% {
+     clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+   }
+   25% {
+     clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%, 100% 100%, 100% 0%, 0% 0%);
+   }
+   50% {
+     clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, 100% 0%, 0% 0%);
+   }
+   75% {
+     -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 0%, 0% 0%);
+   }
+   100% {
+     -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 0% 100%);
+   }
+ }
